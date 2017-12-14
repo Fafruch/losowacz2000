@@ -24,5 +24,10 @@ const data = [
     key: '64752c9dbdc76a40c49d65155d2c0198',
     image: 'https://cdn.pbrd.co/images/GYagqR2.jpg'
   },
+  {
+    name: 'Zuzia',
+    key: 'a9f8af4946c46e91ab6b62696cbe77b2',
+    image: 'https://cdn.pbrd.co/images/GYaSRD9.jpg'
+  }
 ];
 export default data;

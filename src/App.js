@@ -53,7 +53,7 @@ class App extends Component {
 
     this.sortPeople();
 
-    if(this.state.data.length % sum) {
+    if(sum % this.state.data.length === 0) {
       sum += 1;
     }
 
@@ -87,6 +87,7 @@ class App extends Component {
               <option>Marta</option>
               <option>Olga</option>
               <option>Paulina</option>
+              <option>Zuzia</option>
             </select>
           </div>
 
