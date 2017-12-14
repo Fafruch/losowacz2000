@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div className='content p-3'>
-        <div className='container w-50 p-3 card form-group shadow'>
+        <div className='container w-75 p-3 card form-group main-container'>
           <h1 className='text-center mb-3'>POGO_LOSOWACZ_2017</h1>
 
           <div>
