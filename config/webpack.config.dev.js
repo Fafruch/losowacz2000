@@ -198,7 +198,14 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [
+              /\.html$/,
+              /\.(js|jsx)(\?.*)?$/,
+              /\.css$/,
+              /\.json$/,
+              /\.svg$/,
+              /\.mp3$/
+            ],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
@@ -208,6 +215,13 @@ module.exports = {
       },
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.
+      {
+        test: /\.mp3$/,
+        loader: 'file',
+        query: {
+          name: 'static/media/[name].[hash:8].[ext]'
+        }
+      }
     ],
   },
   plugins: [

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import song from './song.mp3';
 import data from './data';
 
 class App extends Component {
@@ -13,6 +14,11 @@ class App extends Component {
     drawnPerson: null,
     data: data
   };
+
+  componentDidMount() {
+    const songFile = new Audio(song);
+    songFile.play();
+  }
 
   handleNameChange = (event) => {
     const input = event.target.value;
