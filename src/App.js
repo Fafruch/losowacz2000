@@ -26,6 +26,9 @@ class App extends Component {
   };
 
   handlePasswordChange = (event) => {
+    if(!this.state.user || !this.state.user.name) {
+      return;
+    }
     const input = event.target.value;
 
     if(this.state.user.key !== input) {
@@ -71,40 +74,52 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='content p-3'>
+        <div className='container w-50 p-3 card form-group shadow'>
+          <h1 className='text-center mb-3'>POGO_LOSOWACZ_2017</h1>
 
-        <div>
-          Kim jestes?
-          <select onChange={this.handleNameChange}>
-            <option />
-            <option>Filip</option>
-            <option>Kuba</option>
-            <option>Marta</option>
-            <option>Olga</option>
-            <option>Paulina</option>
-          </select>
+          <div>
+            Kim jesteś?
+            <select onChange={this.handleNameChange} className='form-control'>
+              <option />
+              <option>Filip</option>
+              <option>Kuba</option>
+              <option>Marta</option>
+              <option>Olga</option>
+              <option>Paulina</option>
+            </select>
+          </div>
+
+          <br />
+
+          <div>
+            Podaj tajne hasło:
+            <input onChange={this.handlePasswordChange} className='form-control'/>
+          </div>
+
+          {
+            this.state.accessDenied &&
+              <div>
+                <br />
+                Podałeś złe hasło, spróbuj ponownie. : (
+              </div>
+          }
+
+          {
+            this.state.accessGiven && !this.state.accessDenied &&
+              <div className='text-center pt-3'>
+                <h2>
+                  {
+                    (this.state.user.name[this.state.user.name.length - 1] === 'a' && this.state.user.name[0] !== 'K') ?
+                      <span>Wylosowałaś:</span> :
+                      <span>Wylosowałeś:</span>
+                  }
+                  {' '}{this.state.drawnPerson.name}. Gratulacje!
+                </h2>
+                <img src={this.state.drawnPerson.image} alt='Zdjecie wylosowanej osoby' className='mt-3 image card card-block' />
+              </div>
+          }
         </div>
-
-        <div>
-          Podaj tajne haslo:
-          <input onChange={this.handlePasswordChange}/>
-        </div>
-
-        {
-          this.state.accessDenied &&
-            <div>
-              Podales zle haslo, sprobuj ponownie. : (
-            </div>
-        }
-
-        {
-          this.state.accessGiven &&
-            <div>
-              Wylosowales: {this.state.drawnPerson.name}. Gratulacje!
-              <img src={this.state.drawnPerson.image} alt='Zdjecie wylosowanej osoby' />
-            </div>
-        }
-
       </div>
     );
   }
